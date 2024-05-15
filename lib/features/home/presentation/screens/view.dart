@@ -344,11 +344,11 @@ class _HomeViewSheetState extends State<HomeViewSheet>
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 SizedBox(
-                                                  width: 40.0.w,
+                                                  width: 10.0.w,
                                                 ),
                                                 Flexible(
                                                   child: Text(
-                                                    "GLodkova, 25, str",
+                                                    "GLodkova,",
                                                     maxLines: 1,
                                                     overflow: TextOverflow.clip,
                                                     style: context
@@ -445,11 +445,11 @@ class _HomeViewSheetState extends State<HomeViewSheet>
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   SizedBox(
-                                                    width: 40.0.w,
+                                                    width: 10.0.w,
                                                   ),
                                                   Flexible(
                                                     child: Text(
-                                                      "GLodkova, 25, str",
+                                                      "GLodkova,",
                                                       maxLines: 1,
                                                       overflow:
                                                           TextOverflow.clip,

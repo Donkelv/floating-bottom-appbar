@@ -10,8 +10,8 @@ class ColorConst {
   static const Color black = Color(0xFF000000);
   static const Color black1 = Color(0xFF232220);
   static Color grey = const Color.fromRGBO(147, 132, 107, 1.0);
-  
-
+  static Color black2 = const Color.fromRGBO(97, 97, 97, 1.0);
+  static Color black3 = const Color.fromRGBO(191, 191, 191, 1.0);
 
   static Color getShade(Color color, {bool darker = false, double value = .1}) {
     assert(value >= 0 && value <= 1);
