@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,68 +15,79 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        top: false,
-        bottom: false,
-        child: Container(
-          height: context.screenHeight,
-          width: context.screenWidth,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                ColorConst.primary.withOpacity(0.025),
-                ColorConst.primary.withOpacity(0.2),
-                ColorConst.primary.withOpacity(0.6),
-                ColorConst.primary.withOpacity(0.8),
-                ColorConst.primary.withOpacity(1)
-              ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        // For Android.
+        // Use [light] for white status bar and [dark] for black status bar.
+        statusBarIconBrightness: Brightness.dark,
+        // For iOS.
+        // Use [dark] for white status bar and [light] for black status bar.
+        statusBarBrightness: Brightness.light,
+        statusBarColor: Colors.white,
+      ),
+      child: Scaffold(
+        body: SafeArea(
+          top: false,
+          bottom: false,
+          child: Container(
+            height: context.screenHeight,
+            width: context.screenWidth,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  ColorConst.primary.withOpacity(0.025),
+                  ColorConst.primary.withOpacity(0.2),
+                  ColorConst.primary.withOpacity(0.6),
+                  ColorConst.primary.withOpacity(0.8),
+                  ColorConst.primary.withOpacity(1)
+                ],
+              ),
             ),
-          ),
-          child: SafeArea(
-            top: true,
-            bottom: false,
-            child: Stack(
-              children: [
-                SizedBox(
-                  height: context.screenHeight,
-                  width: context.screenWidth,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const HomeTopWidget(),
-                      12.0.verticalSpace,
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Hi, Kevin",
-                              style: context.textTheme.bodyLarge!
-                                  .copyWith(color: ColorConst.grey),
-                            ),
-                            5.0.verticalSpace,
-                            Text(
-                              "Lets select your perfect place",
-                              style: context.textTheme.displaySmall!
-                                  .copyWith(color: ColorConst.black),
-                            ),
-                          ],
-                        )
-                            .animate(delay: 1200.milliseconds)
-                            .scale(delay: 200.milliseconds),
-                      ),
-                      50.0.verticalSpace,
-                      const HomeViewButtons(),
-                    ],
+            child: SafeArea(
+              top: true,
+              bottom: false,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    height: context.screenHeight,
+                    width: context.screenWidth,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const HomeTopWidget(),
+                        12.0.verticalSpace,
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Hi, Kevin",
+                                style: context.textTheme.bodyLarge!
+                                    .copyWith(color: ColorConst.grey),
+                              ),
+                              5.0.verticalSpace,
+                              Text(
+                                "Lets select your perfect place",
+                                style: context.textTheme.displaySmall!
+                                    .copyWith(color: ColorConst.black),
+                              ),
+                            ],
+                          )
+                              .animate(delay: 1200.milliseconds)
+                              .scale(delay: 200.milliseconds),
+                        ),
+                        50.0.verticalSpace,
+                        const HomeViewButtons(),
+                      ],
+                    ),
                   ),
-                ),
-                const HomeViewSheet()
-              ],
+                  const HomeViewSheet()
+                ],
+              ),
             ),
           ),
         ),
